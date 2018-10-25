@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 MAINTAINER AdoptOpenJDK <adoption-discuss@openjdk.java.net>
 
@@ -19,7 +19,9 @@ MAINTAINER AdoptOpenJDK <adoption-discuss@openjdk.java.net>
 RUN apt-get update \
   && apt-get install -qq -y --no-install-recommends \
     software-properties-common \
-    python-software-properties \
+    python3-software-properties \
+    dirmngr \
+    gpg-agent \
   && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9 \
   && add-apt-repository 'deb http://repos.azulsystems.com/ubuntu stable main' \
   && apt-get update \
@@ -43,7 +45,7 @@ RUN apt-get update \
     libxt-dev \
     libxtst-dev \
     make \
-    realpath \
+    coreutils \
     unzip \
     wget \
     zip \
